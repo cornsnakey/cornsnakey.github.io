@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title></title>
+  <style>
+    * { margin: 0; padding: 0; }
+    body { background: #121212; }
+  </style>
+</head>
+<body>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code');
+    if (code) {
+      if (typeof browser !== 'undefined') browser.runtime.sendMessage({ type: 'SPOTIFY_CODE', code });
+      if (typeof chrome !== 'undefined' && chrome.runtime) chrome.runtime.sendMessage({ type: 'SPOTIFY_CODE', code });
+      setTimeout(() => window.close(), 1500);
+    }
+  </script>
+</body>
+</html>
