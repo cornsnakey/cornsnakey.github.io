@@ -13,10 +13,10 @@
     const params = new URLSearchParams(window.location.search);
     const code = params.get('code');
     if (code) {
-      if (typeof browser !== 'undefined') browser.runtime.sendMessage({ type: 'SPOTIFY_CODE', code });
-      if (typeof chrome !== 'undefined' && chrome.runtime) chrome.runtime.sendMessage({ type: 'SPOTIFY_CODE', code });
+      localStorage.setItem('spotify_auth_code', code);
       setTimeout(() => window.close(), 1500);
     }
   </script>
 </body>
 </html>
+ 
